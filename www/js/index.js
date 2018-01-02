@@ -67,7 +67,7 @@ var ft = new FileTransfer();
 ft.download(
   "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.pdf", // what u download
  // "/sdcard/test.pdf", // this is the filename as well complete url
-"/files/test.pdf", // this is the filename as well complete url
+"/sdcard/arquivos/test.pdf", // this is the filename as well complete url
   // fileSystem.root.toURL() + "test.zip",  use ios and others
   function(entry) {
     alert("success");
