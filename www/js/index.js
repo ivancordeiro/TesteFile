@@ -134,9 +134,140 @@ ft.download(
 );
  
     }
+,
+
+arq4: function() {
+   var fileTransfer = new FileTransfer();
+   var uri = encodeURI("http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.pdf");
+   var fileURL =  "///storage/emulated/0/DCIM/myFile";
+
+   fileTransfer.download(
+      uri, fileURL, function(entry) {
+         console.log("download complete: " + entry.toURL());
+      },
+		
+      function(error) {
+         console.log("download error source " + error.source);
+         console.log("download error target " + error.target);
+         console.log("download error code" + error.code);
+      },
+		
+      false, {
+         headers: {
+            "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+         }
+      }
+   );
+}
 
 
 
+,
 
+arq5: function() {
+   var fileTransfer = new FileTransfer();
+   var uri = encodeURI("http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.pdf");
+   var fileURL =  "///storage/DCIM/myFile";
+
+   fileTransfer.download(
+      uri, fileURL, function(entry) {
+         console.log("download complete: " + entry.toURL());
+      },
+		
+      function(error) {
+         console.log("download error source " + error.source);
+         console.log("download error target " + error.target);
+         console.log("download error code" + error.code);
+      },
+		
+      false, {
+         headers: {
+            "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+         }
+      }
+   );
+}
+
+,
+
+arq6: function() {
+   var fileTransfer = new FileTransfer();
+   var uri = encodeURI("http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.pdf");
+   var fileURL =  "///storage/DCIM/teste";
+
+   fileTransfer.download(
+      uri, fileURL, function(entry) {
+         console.log("download complete: " + entry.toURL());
+      },
+		
+      function(error) {
+         console.log("download error source " + error.source);
+         console.log("download error target " + error.target);
+         console.log("download error code" + error.code);
+      },
+		
+      false, {
+         headers: {
+            "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+         }
+      }
+   );
+}
+
+
+,
+
+arq7: function() {
+   var fileTransfer = new FileTransfer();
+   var uri = encodeURI("http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.pdf");
+   var fileURL =  "///storage/emulated/0/DCIM/myFile";
+
+   fileTransfer.download(
+      uri, fileURL, function(entry) {
+         console.log("download complete: " + entry.toURL());
+      },
+		
+      function(error) {
+         console.log("download error source " + error.source);
+         console.log("download error target " + error.target);
+         console.log("download error code" + error.code);
+      },
+		
+      false, {
+         headers: {
+            "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+         }
+      }
+   );
+}
+
+,
+
+arq8: function()) {
+        var remoteFile = "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.pdf";
+        var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/')+1);
+        
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+            fileSystem.root.getFile(localFileName, {create: true, exclusive: false}, function(fileEntry) {
+                var localPath = fileEntry.fullPath;
+                if (device.platform === "Android" && localPath.indexOf("file://") === 0) {
+                    localPath = localPath.substring(7);
+                }
+                var ft = new FileTransfer();
+                ft.download(remoteFile,
+                    localPath, function(entry) {
+                        var dwnldImg = document.getElementById("dwnldImg");
+                        dwnldImg.src = entry.fullPath;
+                        dwnldImg.style.visibility = "visible";
+                        dwnldImg.style.display = "block";
+                    }, fail);
+            }, fail);
+        }, fail);
+    }
+
+
+,     fail: function (error) {
+        console.log(error.code);
+    }
 
 };
