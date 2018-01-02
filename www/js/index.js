@@ -45,6 +45,7 @@ function createFile() { // PERSISTENT
   // var type = window.TEMPORARY;
    var type = LocalFileSystem.PERSISTENT;
    var size = 5*1024*1024;
+alert( 'type:' + type );
    window.requestFileSystem(type, size, successCallback, errorCallback)
 
    function successCallback(fs) {
