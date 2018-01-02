@@ -61,7 +61,7 @@ cordova.InAppBrowser.open(encodeURI('http://www.ivanprogramador.com.br/teste/had
 
 var ft = new FileTransfer();
 ft.download(
-  "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.zip", // what u download
+  "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.pdf", // what u download
   "/sdcard/test.zip", // this is the filename as well complete url
   // fileSystem.root.toURL() + "test.zip",  use ios and others
   function(entry) {
