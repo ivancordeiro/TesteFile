@@ -3,6 +3,7 @@ function onDeviceReady() {
     console.log(cordova.file);
     alert('teste');
 createFile();
+createDir();
 
 
 
