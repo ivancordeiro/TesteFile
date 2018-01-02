@@ -34,7 +34,8 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-		app.inapp();
+		//app.inapp();
+app.arq();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -47,11 +48,33 @@ var app = {
 
         console.log('Received Event: ' + id);
     }
+/*
 ,
 	inapp: function() {
 
 //cordova.InAppBrowser.open(encodeURI('http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.php?app=s'), '_self', 'location=no,hidden=no');
 cordova.InAppBrowser.open(encodeURI('http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.php?app=s'), '_system', 'location=no,hidden=no');	   
+    }
+*/
+,
+	arq: function() {
+
+var ft = new FileTransfer();
+ft.download(
+  "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.zip", // what u download
+  "/sdcard/test.zip", // this is the filename as well complete url
+  // fileSystem.root.toURL() + "test.zip",  use ios and others
+  function(entry) {
+    alert("success");
+    alert(JSON.stringify(entry));
+
+  },
+  function(err) {
+    alert(err);
+    alert(JSON.stringify(err));
+  }
+);
+ 
     }
 
 };
