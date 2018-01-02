@@ -61,3 +61,35 @@ alert( 'type:' + type );
  alert('teste 2');
 	
 }
+
+
+
+
+function createDir() { // PERSISTENT
+  var type = window.TEMPORARY;
+  // var type = LocalFileSystem.PERSISTENT;
+var size = 5*1024*1024;
+alert( 'type dir:' + type );
+   window.requestFileSystem(type, size, createDirectory, errorCallback)
+
+
+
+function createDirectory(rootDirEntry) {
+    rootDirEntry.getDirectory('NewDirInRoot', { create: true }, function (dirEntry) {
+        dirEntry.getDirectory('images', { create: true }, function (subDirEntry) {
+
+alert( 'ok dir:'  );
+
+            createFile(subDirEntry, "fileInNewSubDir.txt");
+
+        }, onErrorGetDir);
+    }, onErrorGetDir);
+}
+
+   function errorCallback(error) {
+      alert("ERROR dir: " + error.code)
+   }
+
+ alert('teste 2');
+	
+}
