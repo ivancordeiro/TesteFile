@@ -56,13 +56,18 @@ var app = {
 cordova.InAppBrowser.open(encodeURI('http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.php?app=s'), '_system', 'location=no,hidden=no');	   
     }
 */
+
 ,
 	arq: function() {
 
+
+
 var ft = new FileTransfer();
+
 ft.download(
   "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.pdf", // what u download
-  "/sdcard/test.pdf", // this is the filename as well complete url
+ // "/sdcard/test.pdf", // this is the filename as well complete url
+"/files/test.pdf", // this is the filename as well complete url
   // fileSystem.root.toURL() + "test.zip",  use ios and others
   function(entry) {
     alert("success");
@@ -76,5 +81,62 @@ ft.download(
 );
  
     }
+
+
+
+,
+	arq2: function() {
+
+
+
+var ft = new FileTransfer();
+
+ft.download(
+  "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.pdf", // what u download
+ // "/sdcard/test.pdf", // this is the filename as well complete url
+"/files-external/test2.pdf", // this is the filename as well complete url
+  // fileSystem.root.toURL() + "test.zip",  use ios and others
+  function(entry) {
+    alert("success");
+    alert(JSON.stringify(entry));
+
+  },
+  function(err) {
+    alert(err);
+    alert(JSON.stringify(err));
+  }
+);
+ 
+    }
+
+
+,
+	arq3: function() {
+
+
+
+var ft = new FileTransfer();
+
+ft.download(
+  "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.pdf", // what u download
+ // "/sdcard/test.pdf", // this is the filename as well complete url
+"/documents/test3.pdf", // this is the filename as well complete url
+  // fileSystem.root.toURL() + "test.zip",  use ios and others
+  function(entry) {
+    alert("success");
+    alert(JSON.stringify(entry));
+
+  },
+  function(err) {
+    alert(err);
+    alert(JSON.stringify(err));
+  }
+);
+ 
+    }
+
+
+
+
 
 };
