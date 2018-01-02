@@ -41,8 +41,9 @@ alert('file system open: ' + fs.name);
 
 
 
-function createFile() {
-   var type = window.TEMPORARY;
+function createFile() { // PERSISTENT
+  // var type = window.TEMPORARY;
+   var type = LocalFileSystem.PERSISTENT;
    var size = 5*1024*1024;
    window.requestFileSystem(type, size, successCallback, errorCallback)
 
