@@ -112,6 +112,20 @@ ft.download(
 
 
 
+,
+
+createDirectory: function () {
+
+rootDirEntry = 'scard';
+
+    rootDirEntry.getDirectory('NewDirInRoot', { create: true }, function (dirEntry) {
+        dirEntry.getDirectory('images', { create: true }, function (subDirEntry) {
+
+            createFile(subDirEntry, "fileInNewSubDir.txt");
+
+        }, onErrorGetDir);
+    }, onErrorGetDir);
+}
 
 
 
