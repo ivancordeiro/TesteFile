@@ -1,5 +1,38 @@
 document.addEventListener("deviceready", onDeviceReady, false); 
 
+
+function onDeviceReady() { 
+alert('ok 1');
+downloadFile();	
+}
+
+
+function downloadFile() {
+   var fileTransfer = new FileTransfer();
+   var uri = encodeURI("http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.pdf");
+   var fileURL =  "///storage/emulated/0/DCIM";
+
+   fileTransfer.download(
+      uri, fileURL, function(entry) {
+         console.log("download complete: " + entry.toURL());
+      },
+		
+      function(error) {
+         console.log("download error source " + error.source);
+         console.log("download error target " + error.target);
+         console.log("download error code" + error.code);
+      },
+		
+      false, {
+         headers: {
+            "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+         }
+      }
+   );
+}
+
+/*
+
 function onDeviceReady() { 
 alert('ok 1');
 	
@@ -38,8 +71,11 @@ ft.download(
   }
 );
 	
+	
 }
 
+
+*/
 
 /*
 function onDeviceReady() { 
