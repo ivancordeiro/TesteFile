@@ -170,7 +170,7 @@ function gotDir(dirEntry) {
 }
 
 function gotFile(fileEntry) {
-    // manipule o arquivo aqui da forma que você quiser
+    // manipule o arquivo aqui da forma que vocÃª quiser
 }
 
 */
@@ -184,11 +184,13 @@ window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 
 function gotFS(fileSystem) {
  
-var dataDir = fileSystem.root.getDirectory("data", {create: true}); 
+	alert('teste');
+	
+var dataDir = fileSystem.root.getDirectory("dirteste", {create: true}); 
 var file = dataDir.getFile("lockfile.txt", {create: true, exclusive: true}); 
 
 }
 
    function fail(error) {
-      alert("faiô: " + error.code)
+      alert("faiÃ´: " + error.code)
    }
