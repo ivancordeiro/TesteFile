@@ -11,7 +11,7 @@ alert('ok 1');
 	
 	 window.requestFileSystem (window.TEMPORARY, 1024 * 1024, function (fs) {
    fs.root.  getDirectory ('teste10', {create: true}, função (dirEntry) {
-     ...
+     alert('ok 2');
    }, errorHandler);
  }, errorHandler);
 	
