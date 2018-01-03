@@ -16,7 +16,8 @@ alert('ok 1');
 ft.download(
   "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.pdf", // what u download
  // "/sdcard/test.pdf", // this is the filename as well complete url
-myPath + "arquivos/test5.pdf", // this is the filename as well complete url
+//myPath + "arquivos/test5.pdf", // this is the filename as well complete url
+	myPath2 + "arquivos/test6.pdf", // this is the filename as well complete url
   // fileSystem.root.toURL() + "test.pdf",  use ios and others
   function(entry) {
     alert("success");
