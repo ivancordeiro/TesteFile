@@ -6,7 +6,16 @@ alert('ok 1');
 //downloadFile();
 	
 	
-	createDir('file:///storage/sdcard0/arquivos/', 'teste9', true);
+	//createDir('file:///storage/sdcard0/arquivos/', 'teste9', true);
+	
+	
+	 window.requestFileSystem (window.TEMPORARY, 1024 * 1024, function (fs) {
+   fs.root.  getDirectory ('teste10', {create: true}, função (dirEntry) {
+     ...
+   }, errorHandler);
+ }, errorHandler);
+	
+	
 }
 
 
