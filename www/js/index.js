@@ -158,6 +158,9 @@ window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024, function (fs) {
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
+
+console.log(cordova.file);
+
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 }
 
