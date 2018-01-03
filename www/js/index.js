@@ -5,9 +5,8 @@ function onDeviceReady() {
 alert('ok 1');
 //downloadFile();
 	
-	var path = cordova.file.externalRootDirectory; 
 	
-	createDir(path, 'teste9', true);
+	createDir('file:///storage/sdcard0/arquivos/', 'teste9', true);
 }
 
 
