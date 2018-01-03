@@ -203,7 +203,7 @@ var file = dataDir.getFile("lockfile.txt", {create: true, exclusive: true});
    
    */
 
-
+/*
 
 document.addEventListener("deviceready", onDeviceReady, false); 
 
@@ -232,3 +232,77 @@ function gotFile(fileEntry) {
    function fail(error) {
       alert("faiô: ")
    }
+   
+   */
+
+
+document.addEventListener("deviceready", onDeviceReady, false); 
+
+function onDeviceReady() { 
+	//console.log(cordova.file);
+		alert('ok 1');
+	
+	
+	
+	var myPath = cordova.file.externalRootDirectory; // We can use the default externalRootDirectory or use a path : file://my/custom/folder
+
+	alert('myPath:' + myPath);
+	
+window.resolveLocalFileSystemURL(myPath, function (dirEntry) {
+     var directoryReader = dirEntry.createReader();
+     directoryReader.readEntries(onSuccessCallback,onFailCallback);
+});
+
+function onSuccessCallback(entries){
+  // The magic will happen here, check out entries with :
+  // 
+	console.log(entries);
+	alert('entries:' + entries);
+}
+
+function onFailCallback(){
+  // In case of error
+}
+	
+	
+	
+	/**
+ * This function will draw the given path.
+ */
+function listPath(myPath){
+  window.resolveLocalFileSystemURL(myPath, function (dirEntry) {
+       var directoryReader = dirEntry.createReader();
+       directoryReader.readEntries(onSuccessCallback,onFailCallback);
+  });
+
+  function onSuccessCallback(entries){
+       for (i=0; i<entries.length; i++) {
+           var row = entries[i];
+           var html = '';         
+           if(row.isDirectory){
+                 // We will draw the content of the clicked folder
+                 html = '<li onclick="listPath('+"'"+row.nativeURL+"'"+');">'+row.name+'</li>';
+           }else{
+                 // alert the path of file
+                 html = '<li onclick="getFilepath('+"'"+row.nativeURL+"'"+');">'+row.name+'</li>';
+           }
+       
+       }
+                
+        document.getElementById("select-demo").innerHTML = html;
+  }
+
+  function onFailCallback(e){
+    console.error(e);
+	  alert('erro 5');
+    // In case of error
+  }
+}
+
+function getFilepath(thefilepath){
+        alert(thefilepath);
+}
+	
+	
+	
+			 } 
