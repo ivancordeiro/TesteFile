@@ -1,10 +1,13 @@
+/*
+
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
     console.log(cordova.file);
     alert('teste');
 createFile();
 createDir();
-
+createDir2();
+fileTempor();
 
 
 
@@ -83,8 +86,8 @@ alert( 'ok dir:'  );
 
             createFile(subDirEntry, "fileInNewSubDir.txt");
 
-        }, onErrorGetDir);
-    }, onErrorGetDir);
+        }, errorCallback);
+    }, errorCallback);
 }
 
    function errorCallback(error) {
@@ -93,4 +96,79 @@ alert( 'ok dir:'  );
 
  alert('teste 2');
 	
+}
+
+
+
+
+
+function createDir2() { // PERSISTENT
+  var type = window.TEMPORARY;
+  // var type = LocalFileSystem.PERSISTENT;
+var size = 5*1024*1024;
+alert( 'type dir:' + type );
+   window.requestFileSystem(type, size, createDirectory, errorCallback)
+
+
+
+function createDirectory(rootDirEntry) {
+    rootDirEntry.getDirectory('NewDirInRoot', { create: true }, function (dirEntry) {
+
+        dirEntry.getDirectory('images', { create: true }, function (subDirEntry) {
+
+alert( 'ok dir 2:'  );
+
+            createFile(subDirEntry, "fileInNewSubDir.txt");
+
+        }, errorCallback);
+    }, errorCallback);//onErrorGetDir
+}
+
+   function errorCallback(error) {
+      alert("ERROR dir 2: " + error.code)
+   }
+
+ alert('teste 2 c');
+	
+}
+
+
+
+
+
+
+function fileTempor() { 
+
+alert(' teste ftemp ');
+
+window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024, function (fs) {
+
+    console.log('file system open: ' + fs.name);
+    createFile(fs.root, "newTempFile.txt", false);
+
+}, onErrorLoadFs);
+
+
+}
+
+*/
+
+
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+}
+
+function gotFS(fileSystem) {
+   fileSystem.root.getDirectory("foo", {create: true}, gotDir);
+}
+
+function gotDir(dirEntry) {
+    dirEntry.getFile("bar.txt", {create: true, exclusive: true}, gotFile);
+}
+
+function gotFile(fileEntry) {
+    // manipule o arquivo aqui da forma que você quiser
 }
