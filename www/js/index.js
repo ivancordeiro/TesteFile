@@ -10,6 +10,7 @@ alert('ok 1');
 	
 	var myPath3 = 'file:///Android/data/br.com.testefile/files/'; 
 	
+
 	//var myPath4 = fileSystem.root.toURL();
 
 	alert('myPath:' + myPath);
