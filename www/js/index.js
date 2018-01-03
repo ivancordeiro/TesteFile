@@ -3,8 +3,11 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() { 
 alert('ok 1');
-//downloadFile();
 	
+	json();
+//downloadFile();
+
+	/*
 	
 	//createDir('file:///storage/sdcard0/arquivos/', 'teste9', true);
 	
@@ -15,7 +18,7 @@ alert('ok 1');
    }, errorHandler);
  }, errorHandler);
 	
-	
+*/	
 }
 
 
