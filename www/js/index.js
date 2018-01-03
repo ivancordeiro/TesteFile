@@ -153,7 +153,7 @@ window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024, function (fs) {
 
 */
 
-
+/*
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -172,3 +172,23 @@ function gotDir(dirEntry) {
 function gotFile(fileEntry) {
     // manipule o arquivo aqui da forma que você quiser
 }
+
+*/
+
+
+document.addEventListener("deviceready", onDeviceReady, false); 
+
+function onDeviceReady() { 
+window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail); 
+} 
+
+function gotFS(fileSystem) {
+ 
+var dataDir = fileSystem.root.getDirectory("data", {create: true}); 
+var file = dataDir.getFile("lockfile.txt", {create: true, exclusive: true}); 
+
+}
+
+   function fail(error) {
+      alert("faiô: " + error.code)
+   }
