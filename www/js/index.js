@@ -179,6 +179,9 @@ function gotFile(fileEntry) {
 */
 
 
+
+
+/*
 document.addEventListener("deviceready", onDeviceReady, false); 
 
 function onDeviceReady() { 
@@ -197,3 +200,29 @@ var file = dataDir.getFile("lockfile.txt", {create: true, exclusive: true});
    function fail(error) {
       alert("faiô: " + error.code)
    }
+   
+   */
+
+
+
+document.addEventListener("deviceready", onDeviceReady, false); 
+
+function onDeviceReady() { 
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail); 
+		alert('ok 1');
+			 } 
+
+function gotFS(fileSystem) { 	
+	fileSystem.root.getDirectory("dirteste2", {create: true}, gotDir); 
+		alert('ok 2');
+} 
+
+function gotDir(dirEntry) { 
+	dirEntry.getFile("lockfile.txt", {create: true, exclusive: true}, gotFile); 
+		alert('ok 3');
+} 
+
+function gotFile(fileEntry) { 
+	// Do something with fileEntry here 
+	alert('ok 4');
+} 
