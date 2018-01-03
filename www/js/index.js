@@ -51,6 +51,8 @@ function downloadFile() {
 
 
 function json(){
+	
+	alert('teste  json');
 $.getJSON('http://ivanprogramador.com.br/json.php', function(data){
 
 for( var i=0; i, data.length; i++){
