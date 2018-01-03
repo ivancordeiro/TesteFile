@@ -3,8 +3,15 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() { 
 alert('ok 1');
-downloadFile();	
+//downloadFile();
+	
+	var path = cordova.file.externalRootDirectory; 
+	
+	createDir(path, 'teste9', true);
 }
+
+
+
 
 
 function downloadFile() {
