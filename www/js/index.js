@@ -208,6 +208,7 @@ var file = dataDir.getFile("lockfile.txt", {create: true, exclusive: true});
 document.addEventListener("deviceready", onDeviceReady, false); 
 
 function onDeviceReady() { 
+	console.log(cordova.file);
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail); 
 		alert('ok 1');
 			 } 
