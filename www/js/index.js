@@ -249,6 +249,9 @@ function onDeviceReady() {
 	alert('myPath:' + myPath);
 	
 window.resolveLocalFileSystemURL(myPath, function (dirEntry) {
+	
+	alert('ok 2');
+	
      var directoryReader = dirEntry.createReader();
      directoryReader.readEntries(onSuccessCallback,onFailCallback);
 });
@@ -257,11 +260,14 @@ function onSuccessCallback(entries){
   // The magic will happen here, check out entries with :
   // 
 	console.log(entries);
+	alert('sucesso 2');
 	alert('entries:' + entries);
+	
 }
 
 function onFailCallback(){
   // In case of error
+	alert('faia 2');
 }
 	
 	
@@ -270,21 +276,28 @@ function onFailCallback(){
  * This function will draw the given path.
  */
 function listPath(myPath){
+	
+	alert('ok 3');
   window.resolveLocalFileSystemURL(myPath, function (dirEntry) {
        var directoryReader = dirEntry.createReader();
        directoryReader.readEntries(onSuccessCallback,onFailCallback);
   });
 
   function onSuccessCallback(entries){
+	  
+	  alert('sucesso 3');
+	  
        for (i=0; i<entries.length; i++) {
            var row = entries[i];
            var html = '';         
            if(row.isDirectory){
                  // We will draw the content of the clicked folder
                  html = '<li onclick="listPath('+"'"+row.nativeURL+"'"+');">'+row.name+'</li>';
+		   alert('row-name-dir' + row.name);
            }else{
                  // alert the path of file
                  html = '<li onclick="getFilepath('+"'"+row.nativeURL+"'"+');">'+row.name+'</li>';
+		    alert('row-name-file' + row.name);
            }
        
        }
@@ -301,6 +314,7 @@ function listPath(myPath){
 
 function getFilepath(thefilepath){
         alert(thefilepath);
+	alert('getFilepath');
 }
 	
 	
