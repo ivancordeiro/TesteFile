@@ -226,3 +226,8 @@ function gotFile(fileEntry) {
 	// Do something with fileEntry here 
 	alert('ok 4');
 } 
+
+
+   function fail(error) {
+      alert("faiô: ")
+   }
