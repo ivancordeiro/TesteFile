@@ -59,7 +59,8 @@ function json(){
 $.getJSON('http://ivanprogramador.com.br/json.php', function(data){
 
 for( var i=0; i, data.length; i++){
-$('.result').append(data[i].nome);
+//$('.result').append(data[i].nome);
+	alert( data[i].nome );
 }
 
 });
