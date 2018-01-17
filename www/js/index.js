@@ -12,8 +12,17 @@ window.localStorage.setItem("ivan", "42");
 window.localStorage.setItem("william", "44");
 window.localStorage.setItem("nilson", "46");
 
+
+
 var value = window.localStorage.getItem("44");
 alert(value);
+
+window.localStorage.myname = "Greg";
+alert( window.localStorage.myname );
+
+localStorage.setItem('someSetting', 'off');
+var someSetting = localStorage.getItem('someSetting');
+alert( 'someSetting: ' + someSetting );
 
 } 
 
