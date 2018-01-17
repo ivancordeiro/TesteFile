@@ -5,34 +5,29 @@ function onDeviceReady() {
 alert('ok 1');
 //arq();
 
-var db = null;
-db = window.sqlitePlugin.openDatabase({name: 'demo.db', location: 'default'});
-
-
-  db.transaction(function(tx) {
-    tx.executeSql('CREATE TABLE IF NOT EXISTS DemoTable (name, score)');
-    tx.executeSql('INSERT INTO DemoTable VALUES (?,?)', ['Alice', 101]);
-    tx.executeSql('INSERT INTO DemoTable VALUES (?,?)', ['Betty', 202]);
-  }, function(error) {
-    console.log('Transaction ERROR: ' + error.message);
-alert('Transaction ERROR: ' + error.message);
-  }, function() {
-    console.log('Populated database OK console');
-alert('Populated database OK alert');
-  });
-
-
-
-
-
-  db.executeSql('SELECT * FROM DemoTable', [], function (resultSet) {
-    console.log('Sample column value: ' + resultSet.rows.item(0).SampleColumn);
-alert('Sample column value: ' + resultSet.rows.item(0).SampleColumn);
-  });
+var db = window.openDatabase("Database","1.0","BancoCodeAm",2000000);
+db.transaction(populateDB,errorDB,sucessDB);
 
 } 
 
 
+
+function populateDB(tx){
+tx.executeSql('DROP TABLE IF EXISTS codeAM');
+tx.executeSql('CREATE TABLE codeAM(id INTEGER PRIMARY KEY AS, clubes)');
+tx.executeSql('INSERT INTO codeAM(id, clubes) values(1,"Galo") ');
+tx.executeSql('INSERT INTO codeAM(id, clubes) values(2,"Flamengo") ');
+tx.executeSql('INSERT INTO codeAM(id, clubes) values(3,"Cruzeiro") ');
+}
+
+
+function errorDB(err){
+alert("erro:" + er.code );
+}
+
+function sucessDB(){
+alert("sucesso");
+}
 
 
 
