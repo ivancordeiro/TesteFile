@@ -8,6 +8,13 @@ alert('ok 1');
 //var db = window.openDatabase("Database","1.0","BancoCodeAm",2000000);
 //db.transaction(populateDB,errorDB,sucessDB);
 
+window.localStorage.setItem("ivan", "42");
+window.localStorage.setItem("william", "44");
+window.localStorage.setItem("nilson", "46");
+
+var value = window.localStorage.getItem("44");
+alert(value);
+
 } 
 
 
