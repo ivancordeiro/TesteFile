@@ -59,67 +59,34 @@
 
 
 <script type="text/javascript" src="js/jquery-2.1.3.min"></script>
- <script type="text/javascript">
-/*
- $(document).ready(function()
- {
- var url="http://ivanprogramador.com.br/json2.php";
- $.getJSON(url,function(result){
- //console.log(result);
-alert(result);
- $.each(result, function(i, field){
- var id=field.id;
- var title=field.title;
- var duration=field.duration;
- var price=field.price;
- $("#listview").append("<a class='item' href='form.html?id="+id+"&title="+title+"&duration="+duration+"&price="+price+"'><span class='item-note'>$"+price+"</span><h2>"+ title + " </h2><p>"+ duration +"</p></a>");
- });
- });
- });
-*/
- </script>
+<script type="text/javascript">
+function json(){
+
+alert('testando envio json');
+	
+$.ajax({
+//dataType: "json",
+type: "POST",
+url: "http://ivanprogramador.com.br/json3.php",
+data: "dia=" ,
+crossDomain: true,
+
+success: function(retorno){ 
+
+alert(  "Testando retorno de json 3: " + retorno);
+
+}
+,beforeSend: function(){
+	
+},
+complete: function(){
+
+}
+
+});
 
 
-
-
- <script type="text/javascript">
- $(document).ready(function(){
- $("#insert").click(function(){
- //var title=$("#title").val();
- //var duration=$("#duration").val();
- //var price=$("#price").val();
- //var dataString="title="+title+"&duration="+duration+"&price="+price+"&insert=";
- //if($.trim(title).length>0 & $.trim(duration).length>0 & $.trim(price).length>0){
- $.ajax({
- type: "POST",
- url:"http://ivanprogramador.com.br/json3.php",
- //data: dataString,
- crossDomain: true,
- cache: false,
- beforeSend: function(){ $("#insert").val('Connecting...');},
- success: function(data){
-
- alert("data");
-$("#insert").val('submit');
-
- /*if(data=="success")
- {
- alert("inserted");
- $("#insert").val('submit');
- }
- else if(data=="error")
- {
- alert("error");
- }*/
- }
- });
-
- //}return false;
-
-
-
- });
- });
+}
  </script>
 
 <br>
@@ -127,7 +94,7 @@ $("#insert").val('submit');
 
 1
  <div class="item">
- <input type="button" id="insert" class="button button-block" value="Insert"/>
+<input type="button" id="button3" value="Json" onClick="json()" style="font-size:30px;padding:10px;">
  </div><br>
 <br>
 
