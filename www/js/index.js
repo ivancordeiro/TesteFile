@@ -1,3 +1,52 @@
+document.addEventListener("deviceready", onDeviceReady, false); 
+
+function onDeviceReady() { 
+
+alert('ok 1');
+arq();
+
+} 
+
+
+
+
+
+
+
+arq: function() {
+
+alert('ok 2');
+
+
+		var ft = new FileTransfer();
+		
+		ft.download(
+		  "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.pdf", // what u download
+		 // "/sdcard/test.pdf", // this is the filename as well complete url
+		"/sdcard/arquivos/test17jan.pdf", // this is the filename as well complete url
+		  // fileSystem.root.toURL() + "test.zip",  use ios and others
+		
+		  function(entry) {
+			alert("success");
+			alert(JSON.stringify(entry));
+		
+		  },
+		  function(err) {
+			alert(err);
+			alert(JSON.stringify(err));
+		  }
+		
+		);
+ 
+
+
+}
+
+
+
+
+
+
 /*
 
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -173,7 +222,7 @@ function gotDir(dirEntry) {
 }
 
 function gotFile(fileEntry) {
-    // manipule o arquivo aqui da forma que você quiser
+    // manipule o arquivo aqui da forma que vocÃª quiser
 }
 
 */
@@ -198,7 +247,7 @@ var file = dataDir.getFile("lockfile.txt", {create: true, exclusive: true});
 }
 
    function fail(error) {
-      alert("faiô: " + error.code)
+      alert("faiÃ´: " + error.code)
    }
    
    */
@@ -230,12 +279,14 @@ function gotFile(fileEntry) {
 
 
    function fail(error) {
-      alert("faiô: ")
+      alert("faiÃ´: ")
    }
    
    */
 
 
+
+/* 17jan
 document.addEventListener("deviceready", onDeviceReady, false); 
 
 function onDeviceReady() { 
@@ -252,8 +303,8 @@ window.resolveLocalFileSystemURL(myPath, function (dirEntry) {
 	
 	alert('ok 2');
 	
-     var directoryReader = dirEntry.createReader();
-     directoryReader.readEntries(onSuccessCallback,onFailCallback);
+Â  Â  Â var directoryReader = dirEntry.createReader();
+Â  Â  Â directoryReader.readEntries(onSuccessCallback,onFailCallback);
 });
 
 
@@ -270,56 +321,53 @@ function onSuccessCallback(entries){
 
 
 function onFailCallback(){
-  // In case of error
+Â Â // In case of error
 	alert('faia 2');
 }
 	
 	
-	
-	/**
- * This function will draw the given path.
- */
 
 
 
 
 
-/* 17jan
+
+
 function listPath(myPath){
 	
 	alert('ok 3');
   window.resolveLocalFileSystemURL(myPath, function (dirEntry) {
-       var directoryReader = dirEntry.createReader();
-       directoryReader.readEntries(onSuccessCallback,onFailCallback);
-  });
+Â Â Â  Â  Â var directoryReader = dirEntry.createReader();
+Â Â Â  Â  Â directoryReader.readEntries(onSuccessCallback,onFailCallback);
+Â Â });
 
-  function onSuccessCallback(entries){
+Â Â function onSuccessCallback(entries){
 	  
 	  alert('sucesso 3');
 	  
-       for (i=0; i<entries.length; i++) {
-           var row = entries[i];
-           var html = '';         
-           if(row.isDirectory){
+Â Â      for (i=0; i<entries.length; i++) {
+Â  Â  Â  Â  Â   var row = entries[i];
+Â  Â  Â  Â  Â  Â var html = ''; Â  Â  Â  Â Â 
+Â  Â  Â  Â  Â  Â if(row.isDirectory){
                  // We will draw the content of the clicked folder
-                 html = '<li onclick="listPath('+"'"+row.nativeURL+"'"+');">'+row.name+'</li>';
+Â  Â  Â  Â  Â  Â  Â  Â   html = '<li onclick="listPath('+"'"+row.nativeURL+"'"+');">'+row.name+'</li>';
 		   alert('row-name-dir' + row.name);
-           }else{
+Â  Â  Â  Â  Â   }else{
                  // alert the path of file
-                 html = '<li onclick="getFilepath('+"'"+row.nativeURL+"'"+');">'+row.name+'</li>';
+      Â Â Â Â Â Â Â Â Â Â  html = '<li onclick="getFilepath('+"'"+row.nativeURL+"'"+');">'+row.name+'</li>';
 		    alert('row-name-file' + row.name);
            }
-       
+Â  Â  Â   
        }
-                
-        document.getElementById("select-demo").innerHTML = html;
-  }
+Â  Â  Â  Â  Â  Â  Â  Â Â 
+Â  Â  Â  Â  document.getElementById("select-demo").innerHTML = html;
+Â Â }
 
-  function onFailCallback(e){
+Â Â function onFailCallback(e){
     console.error(e);
 	  alert('erro 5');
-    // In case of error
-  }
+Â Â Â Â // In case of error
+Â Â }
 }
 
 function getFilepath(thefilepath){
@@ -328,6 +376,7 @@ function getFilepath(thefilepath){
 }
 	
 	
-17jan */
+
 	
 			 } 
+17jan */
