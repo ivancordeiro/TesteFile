@@ -1,130 +1,55 @@
-document.addEventListener("deviceready", onDeviceReady, false); 
-
-
-function onDeviceReady() { 
-alert('ok 1');
-	
-	json();
-//downloadFile();
-
-	/*
-	
-	//createDir('file:///storage/sdcard0/arquivos/', 'teste9', true);
-	
-	
-	 window.requestFileSystem (window.TEMPORARY, 1024 * 1024, function (fs) {
-   fs.root.  getDirectory ('teste10', {create: true}, funÃ§Ã£o (dirEntry) {
-     alert('ok 2');
-   }, errorHandler);
- }, errorHandler);
-	
-*/	
-}
-
-
-
-
-
-function downloadFile() {
-   var fileTransfer = new FileTransfer();
-   var uri = encodeURI("http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.pdf");
-   var fileURL =  "///storage/emulated/0/DCIM";
-
-   fileTransfer.download(
-      uri, fileURL, function(entry) {
-         console.log("download complete: " + entry.toURL());
-      },
-		
-      function(error) {
-         console.log("download error source " + error.source);
-         console.log("download error target " + error.target);
-         console.log("download error code" + error.code);
-      },
-		
-      false, {
-         headers: {
-            "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
-         }
-      }
-   );
-}
-
-
-
-
-
-function json(){
-	
-	alert('teste  json');
-$.getJSON('http://ivanprogramador.com.br/json.php', function(data){
-
-for( var i=0; i, data.length; i++){
-//$('.result').append(data[i].nome);
-	alert( data[i].nome );
-}
-
-});
-
-}
-
-
 /*
 
-function onDeviceReady() { 
-alert('ok 1');
-	
-	var myPath = cordova.file.externalRootDirectory; 
-	// We can use the default externalRootDirectory or use a path : file://my/custom/folder
-	
-	var myPath2 = cordova.file.dataDirectory; 
-	
-	var myPath3 = 'file:///Android/data/br.com.testefile/files/'; 
-	
-
-	//var myPath4 = fileSystem.root.toURL();
-
-	alert('myPath:' + myPath);
-	alert('myPath2:' + myPath2);
-	//alert('myPath4:' + myPath4);
-	
-	var ft = new FileTransfer();
-
-ft.download(
-  "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.pdf", // what u download
- // "/sdcard/test.pdf", // this is the filename as well complete url
-//myPath + "arquivos/test5.pdf", // this is the filename as well complete url
-	//myPath3 + "test7.pdf", // this is the filename as well complete url
-	
-	myPath2 + "test8.pdf", // this is the filename as well complete url
-  // fileSystem.root.toURL() + "test.pdf",  use ios and others
-  function(entry) {
-    alert("success");
-    alert(JSON.stringify(entry));
-
-  },
-  function(err) {
-    alert(err);
-    alert(JSON.stringify(err));
-  }
-);
-	
-	
-}
-
-
-*/
-
-/*
-function onDeviceReady() { 
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    console.log(cordova.file);
+    alert('teste');
 createFile();
-alert('ok 1');
+createDir();
+createDir2();
+fileTempor();
+
+
+
+
+
+
+
+
+window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
+
+    console.log('file system open: ' + fs.name);
+alert('file system open: ' + fs.name);
+    fs.root.getFile("newPersistentFile.txt", { create: true, exclusive: false }, function (fileEntry) {
+
+        console.log("fileEntry is file?" + fileEntry.isFile.toString());
+        // fileEntry.name == 'someFile.txt'
+        // fileEntry.fullPath == '/someFile.txt'
+        writeFile(fileEntry, null);
+
+    }, onErrorCreateFile);
+
+}, onErrorLoadFs);
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
 
-function createFile() {
-   var type = window.TEMPORARY;
+function createFile() { // PERSISTENT
+  // var type = window.TEMPORARY;
+   var type = LocalFileSystem.PERSISTENT;
    var size = 5*1024*1024;
+alert( 'type:' + type );
    window.requestFileSystem(type, size, successCallback, errorCallback)
 
    function successCallback(fs) {
@@ -136,6 +61,273 @@ function createFile() {
    function errorCallback(error) {
       alert("ERROR: " + error.code)
    }
+
+ alert('teste 2');
 	
 }
+
+
+
+
+function createDir() { // PERSISTENT
+  var type = window.TEMPORARY;
+  // var type = LocalFileSystem.PERSISTENT;
+var size = 5*1024*1024;
+alert( 'type dir:' + type );
+   window.requestFileSystem(type, size, createDirectory, errorCallback)
+
+
+
+function createDirectory(rootDirEntry) {
+    rootDirEntry.getDirectory('NewDirInRoot', { create: true }, function (dirEntry) {
+        dirEntry.getDirectory('images', { create: true }, function (subDirEntry) {
+
+alert( 'ok dir:'  );
+
+            createFile(subDirEntry, "fileInNewSubDir.txt");
+
+        }, errorCallback);
+    }, errorCallback);
+}
+
+   function errorCallback(error) {
+      alert("ERROR dir: " + error.code)
+   }
+
+ alert('teste 2');
+	
+}
+
+
+
+
+
+function createDir2() { // PERSISTENT
+  var type = window.TEMPORARY;
+  // var type = LocalFileSystem.PERSISTENT;
+var size = 5*1024*1024;
+alert( 'type dir:' + type );
+   window.requestFileSystem(type, size, createDirectory, errorCallback)
+
+
+
+function createDirectory(rootDirEntry) {
+    rootDirEntry.getDirectory('NewDirInRoot', { create: true }, function (dirEntry) {
+
+        dirEntry.getDirectory('images', { create: true }, function (subDirEntry) {
+
+alert( 'ok dir 2:'  );
+
+            createFile(subDirEntry, "fileInNewSubDir.txt");
+
+        }, errorCallback);
+    }, errorCallback);//onErrorGetDir
+}
+
+   function errorCallback(error) {
+      alert("ERROR dir 2: " + error.code)
+   }
+
+ alert('teste 2 c');
+	
+}
+
+
+
+
+
+
+function fileTempor() { 
+
+alert(' teste ftemp ');
+
+window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024, function (fs) {
+
+    console.log('file system open: ' + fs.name);
+    createFile(fs.root, "newTempFile.txt", false);
+
+}, onErrorLoadFs);
+
+
+}
+
 */
+
+/*
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+
+console.log(cordova.file);
+
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+}
+
+function gotFS(fileSystem) {
+   fileSystem.root.getDirectory("foo", {create: true}, gotDir);
+}
+
+function gotDir(dirEntry) {
+    dirEntry.getFile("bar.txt", {create: true, exclusive: true}, gotFile);
+}
+
+function gotFile(fileEntry) {
+    // manipule o arquivo aqui da forma que você quiser
+}
+
+*/
+
+
+
+
+/*
+document.addEventListener("deviceready", onDeviceReady, false); 
+
+function onDeviceReady() { 
+window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail); 
+} 
+
+function gotFS(fileSystem) {
+ 
+	alert('teste');
+	
+var dataDir = fileSystem.root.getDirectory("dirteste", {create: true}); 
+var file = dataDir.getFile("lockfile.txt", {create: true, exclusive: true}); 
+
+}
+
+   function fail(error) {
+      alert("faiô: " + error.code)
+   }
+   
+   */
+
+/*
+
+document.addEventListener("deviceready", onDeviceReady, false); 
+
+function onDeviceReady() { 
+	console.log(cordova.file);
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail); 
+		alert('ok 1');
+			 } 
+
+function gotFS(fileSystem) { 	
+	fileSystem.root.getDirectory("dirteste2", {create: true}, gotDir); 
+		alert('ok 2');
+} 
+
+function gotDir(dirEntry) { 
+	dirEntry.getFile("lockfile.txt", {create: true, exclusive: true}, gotFile); 
+		alert('ok 3');
+} 
+
+function gotFile(fileEntry) { 
+	// Do something with fileEntry here 
+	alert('ok 4');
+} 
+
+
+   function fail(error) {
+      alert("faiô: ")
+   }
+   
+   */
+
+
+document.addEventListener("deviceready", onDeviceReady, false); 
+
+function onDeviceReady() { 
+	//console.log(cordova.file);
+		alert('ok 1');
+	
+	
+	
+	var myPath = cordova.file.externalRootDirectory; // We can use the default externalRootDirectory or use a path : file://my/custom/folder
+
+	alert('myPath:' + myPath);
+	
+window.resolveLocalFileSystemURL(myPath, function (dirEntry) {
+	
+	alert('ok 2');
+	
+     var directoryReader = dirEntry.createReader();
+     directoryReader.readEntries(onSuccessCallback,onFailCallback);
+});
+
+
+
+
+function onSuccessCallback(entries){
+  // The magic will happen here, check out entries with :
+  // 
+	////////console.log(entries);
+	alert('sucesso 2');
+	alert('entries:' + entries);
+	
+}
+
+
+function onFailCallback(){
+  // In case of error
+	alert('faia 2');
+}
+	
+	
+	
+	/**
+ * This function will draw the given path.
+ */
+
+
+
+
+
+/* 17jan
+function listPath(myPath){
+	
+	alert('ok 3');
+  window.resolveLocalFileSystemURL(myPath, function (dirEntry) {
+       var directoryReader = dirEntry.createReader();
+       directoryReader.readEntries(onSuccessCallback,onFailCallback);
+  });
+
+  function onSuccessCallback(entries){
+	  
+	  alert('sucesso 3');
+	  
+       for (i=0; i<entries.length; i++) {
+           var row = entries[i];
+           var html = '';         
+           if(row.isDirectory){
+                 // We will draw the content of the clicked folder
+                 html = '<li onclick="listPath('+"'"+row.nativeURL+"'"+');">'+row.name+'</li>';
+		   alert('row-name-dir' + row.name);
+           }else{
+                 // alert the path of file
+                 html = '<li onclick="getFilepath('+"'"+row.nativeURL+"'"+');">'+row.name+'</li>';
+		    alert('row-name-file' + row.name);
+           }
+       
+       }
+                
+        document.getElementById("select-demo").innerHTML = html;
+  }
+
+  function onFailCallback(e){
+    console.error(e);
+	  alert('erro 5');
+    // In case of error
+  }
+}
+
+function getFilepath(thefilepath){
+        alert(thefilepath);
+	alert('getFilepath');
+}
+	
+	
+17jan */
+	
+			 } 
