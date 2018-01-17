@@ -3,7 +3,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() { 
 
 alert('ok 1');
-arq();
+//arq();
 
 } 
 
@@ -42,3 +42,10 @@ alert('chamou funcao dowload');
 
 }
 
+
+
+
+function arq2(){
+cordova.InAppBrowser.open(encodeURI('http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.pdf'), '_blank', 'location=no,hidden=no');
+	   
+    }
