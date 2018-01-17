@@ -63,6 +63,7 @@
 
 <!-- <script type="text/javascript" src="js/jquery-2.1.3.min"></script> -->
 <script type="text/javascript">
+
 function json(){
 
 alert('testando envio json');
@@ -108,6 +109,95 @@ alert('teste for: '+ data[i].nome);
 }
 
 
+
+
+
+
+function json3(){
+
+alert('testando envio json 3');
+	
+$.ajax({
+//dataType: "json",
+type: "POST",
+url: "http://ivanprogramador.com.br/json3.php",
+data: "dia=" ,
+crossDomain: true,
+
+success: function(retorno){ 
+
+alert(  "Testando retorno de json 3: " + retorno);
+
+}
+,beforeSend: function(){
+	
+},
+complete: function(){
+
+}
+
+});
+
+
+}
+
+
+
+
+
+
+function json4(){
+
+alert('testando envio json 4');
+	
+$.ajax({
+dataType: "json",
+type: "POST",
+url: "http://ivanprogramador.com.br/json4.php",
+data: "dia=" ,
+crossDomain: true,
+
+success: function(retorno){ 
+
+alert(  "Testando retorno de json 4: " + retorno);
+
+}
+,beforeSend: function(){
+},
+complete: function(){
+}
+
+});
+
+}
+
+
+
+function json5(){
+
+alert('testando envio json 5');
+	
+$.ajax({
+//dataType: "json",
+type: "POST",
+url: "http://radionorth.com.br/sistema/cliente/json5.php",
+data: "dia=" ,
+crossDomain: true,
+
+success: function(retorno){ 
+
+alert(  "Testando retorno de json 5: " + retorno);
+
+}
+,beforeSend: function(){
+},
+complete: function(){
+}
+
+});
+
+}
+
  </script>
 
 <br>
@@ -123,6 +213,31 @@ alert('teste for: '+ data[i].nome);
 2
  <div class="item">
 <input type="button"  value="Json2" onClick="json2()" style="font-size:30px;padding:10px;">
+ </div><br>
+<br>
+
+
+<br>
+<br>
+
+3
+ <div class="item">
+<input type="button"  value="Json3" onClick="json3()" style="font-size:30px;padding:10px;">
+ </div><br>
+<br>
+
+
+
+4
+ <div class="item">
+<input type="button"  value="Json4" onClick="json4()" style="font-size:30px;padding:10px;">
+ </div><br>
+<br>
+
+
+5
+ <div class="item">
+<input type="button"  value="Json5" onClick="json5()" style="font-size:30px;padding:10px;">
  </div><br>
 <br>
 
