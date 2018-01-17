@@ -5,13 +5,13 @@ function onDeviceReady() {
 alert('ok 1');
 //arq();
 
-var db = window.openDatabase("Database","1.0","BancoCodeAm",2000000);
-db.transaction(populateDB,errorDB,sucessDB);
+//var db = window.openDatabase("Database","1.0","BancoCodeAm",2000000);
+//db.transaction(populateDB,errorDB,sucessDB);
 
 } 
 
 
-
+/*
 function populateDB(tx){
 tx.executeSql('DROP TABLE IF EXISTS codeAM');
 tx.executeSql('CREATE TABLE codeAM(id INTEGER PRIMARY KEY AS, clubes)');
@@ -30,7 +30,7 @@ alert("sucesso");
 }
 
 
-
+*/
 
 
 function arq() {
