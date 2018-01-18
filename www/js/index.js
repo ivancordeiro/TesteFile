@@ -61,9 +61,21 @@ alert( 'someSetting: ' + someSetting );
 
 
 
+
+
+
+}
+
+
+
+
+
+
+
+
     function show() {
-         db = window.openDatabase("Database", "1.0", "PhoneGap Demo", 200000);
-         db.transaction(mostrar, errorCB);
+         db2 = window.openDatabase("Database", "1.0", "PhoneGap Demo", 200000);
+         db2.transaction(mostrar, errorCB);
     }
 
 
@@ -77,12 +89,6 @@ alert( 'someSetting: ' + someSetting );
 var len = results.rows.length;
         alert( len + "linhas encontradas!");
     }
-
-
-}
-
-
-
 
 
 
