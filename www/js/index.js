@@ -1,11 +1,14 @@
-$(document).ready(function(){
 
-var myDB;
+
+
 //Open Database Connection
 document.addEventListener("deviceready",onDeviceReady,false);
 function onDeviceReady(){
+myDB = null;
 myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
 }
+
+
 //Create new table
 //$("#createTable").click(function(){
 function createTable(){
@@ -94,6 +97,5 @@ $("#DropTable").click(function(){
     });
 });
 
-});
 
 
