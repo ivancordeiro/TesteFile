@@ -82,7 +82,7 @@ db.transaction(queryDB, errorCB2);
 
 
 function queryDB(tx) {
-    tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB2);
+    tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB2b);
 }
 
 function querySuccess(tx, results) {
@@ -100,6 +100,10 @@ function errorCB2(err) {
     alert("Error processing SQL 2: "+err.code);
 }
 
+
+function errorCB2b(err) {
+    alert("Error processing SQL 2b: "+err.code);
+}
 
 
 
@@ -148,6 +152,6 @@ cordova.InAppBrowser.open(encodeURI('https://www.ivanprogramador.com.br/teste/ha
 
 
 function nav(){
-cordova.InAppBrowser.open(encodeURI('https://www.ivanprogramador.com.br/teste/hadaya/cliente/'), '_blank', 'location=yes,hidden=no');
+cordova.InAppBrowser.open(encodeURI('https://www.ivanprogramador.com.br/teste/hadaya/cliente/pedido_teste.php'), '_blank', 'location=yes,hidden=no');
 	   
     }
