@@ -2,7 +2,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() { 
 
- console.log('console: Received Event');
+ //console.log('console: Received Event');
 
 alert('ok 1');
 //arq();
@@ -30,7 +30,7 @@ alert( 'someSetting: ' + someSetting );
       var db = window.openDatabase("Database", "1.0", "PhoneGap Demo", 200000);
         db.transaction(populateDB, errorCB, successCB);
 
-} 
+ 
 
 
 
@@ -59,27 +59,11 @@ alert( 'someSetting: ' + someSetting );
 
 
 
-
-/*
-function populateDB(tx){
-tx.executeSql('DROP TABLE IF EXISTS codeAM');
-tx.executeSql('CREATE TABLE codeAM(id INTEGER PRIMARY KEY AS, clubes)');
-tx.executeSql('INSERT INTO codeAM(id, clubes) values(1,"Galo") ');
-tx.executeSql('INSERT INTO codeAM(id, clubes) values(2,"Flamengo") ');
-tx.executeSql('INSERT INTO codeAM(id, clubes) values(3,"Cruzeiro") ');
 }
 
 
-function errorDB(err){
-alert("erro:" + er.code );
-}
-
-function sucessDB(){
-alert("sucesso");
-}
 
 
-*/
 
 
 function arq() {
