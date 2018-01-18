@@ -17,9 +17,8 @@
   },
   "cordova-sqlite-legacy": {
     "source": {
-      "type": "git",
-      "url": "https://github.com/lite4cordova/Cordova-SQLitePlugin",
-      "subdir": "."
+      "type": "registry",
+      "id": "cordova-sqlite-legacy"
     },
     "is_top_level": true,
     "variables": {}

@@ -114,6 +114,5 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
- <!--   <plugin name="cordova-sqlite-storage" spec="~2.2.0" />
-<plugin name="cordova-sqlite-ext" spec="~0.10.7" />-->
+    <plugin name="cordova-sqlite-legacy" spec="~2.0.0" />
 </widget>
