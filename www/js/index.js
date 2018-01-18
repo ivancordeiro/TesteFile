@@ -1,110 +1,94 @@
-document.addEventListener("deviceready", onDeviceReady, false); 
+$(document).ready(function(){
 
-function onDeviceReady() { 
-
- //console.log('console: Received Event');
-
-alert('ok 1');
-//arq();
-
-/*
-
-window.localStorage.setItem("ivan", "42");
-window.localStorage.setItem("william", "44");
-window.localStorage.setItem("nilson", "46");
-
-
-
-var value = window.localStorage.getItem("44");
-alert(value);
-
-window.localStorage.myname = "Greg";
-alert( window.localStorage.myname );
-
-localStorage.setItem('someSetting', 'off');
-var someSetting = localStorage.getItem('someSetting');
-alert( 'someSetting: ' + someSetting );
-
-*/
-
-      var db = window.openDatabase("Database", "1.0", "PhoneGap Demo", 200000);
-        db.transaction(populateDB, errorCB, successCB);
-
- 
-
-
-
- // Populate the database 
-    //
-    function populateDB(tx) {
-         tx.executeSql('DROP TABLE IF EXISTS DEMO');
-         tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
-         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
-         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
-    }
-
-    // Transaction error callback
-    //
-    function errorCB(tx, err) {
-        alert("Error processing SQL: "+err);
-    }
-
-    // Transaction success callback
-    //
-    function successCB() {
-        alert("success!");
-    }
-
-
-
-
-
+var myDB;
+//Open Database Connection
+document.addEventListener("deviceready",onDeviceReady,false);
+function onDeviceReady(){
+myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
 }
+//Create new table
+$("#createTable").click(function(){
+    myDB.transaction(function(transaction) {
+    transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, title text, desc text)', [],
+        function(tx, result) {
+            alert("Table created successfully");
+        }, 
+        function(error) {
+              alert("Error occurred while creating the table.");
+        });
+    });
+});
+
+//Insert New Data
+$("#insert").click(function(){
+  var title=$("#title").val();
+  var desc=$("#desc").val();
+  console.log(title +""+ desc);
+  myDB.transaction(function(transaction) {
+        var executeQuery = "INSERT INTO phonegap_pro (title, desc) VALUES (?,?)";             
+        transaction.executeSql(executeQuery, [title,desc]
+            , function(tx, result) {
+                 alert('Inserted');
+            },
+            function(error){
+                 alert('Error occurred'); 
+            });
+    });
+});
+
+//Display Table Data
+$("#showTable").click(function(){
+  $("#TableData").html("");
+  myDB.transaction(function(transaction) {
+  transaction.executeSql('SELECT * FROM phonegap_pro', [], function (tx, results) {
+       var len = results.rows.length, i;
+       $("#rowCount").html(len);
+       for (i = 0; i < len; i++){
+          $("#TableData").append("<tr><td>"+results.rows.item(i).id+"</td><td>"+results.rows.item(i).title+"</td><td>"+results.rows.item(i).desc+"</td><td><a href='edit.html?id="+results.rows.item(i).id+"&title="+results.rows.item(i).title+"&desc="+results.rows.item(i).desc+"'>Edit</a> &nbsp;&nbsp; <a class='delete' href='#' id='"+results.rows.item(i).id+"'>Delete</a></td></tr>");
+       }
+    }, null);
+  });
+});
+
+//Delete Data from Database
+$(document.body).on('click', '.delete' ,function(){
+  var id=this.id;
+  myDB.transaction(function(transaction) {
+    var executeQuery = "DELETE FROM phonegap_pro where id=?";
+    transaction.executeSql(executeQuery, [id],
+      //On Success
+      function(tx, result) {alert('Delete successfully');},
+      //On Error
+      function(error){alert('Something went Wrong');});
+  });
+});
 
 
+//Delete Tables
+$("#update").click(function(){
+  var id=$("#id").text();
+  var title=$("#title").val();
+  var desc=$("#desc").val()
+  myDB.transaction(function(transaction) {
+    var executeQuery = "UPDATE phonegap_pro SET title=?, desc=? WHERE id=?";
+    transaction.executeSql(executeQuery, [title,desc,id],
+      //On Success
+      function(tx, result) {alert('Updated successfully');},
+      //On Error
+      function(error){alert('Something went Wrong');});
+  });
+});
+
+$("#DropTable").click(function(){
+    myDB.transaction(function(transaction) {
+        var executeQuery = "DROP TABLE  IF EXISTS phonegap_pro";
+        transaction.executeSql(executeQuery, [],
+            function(tx, result) {alert('Table deleted successfully.');},
+            function(error){alert('Error occurred while droping the table.');}
+        );
+    });
+});
+
+});
 
 
-
-
-function arq() {
-
-alert('chamou funcao dowload');
-
-
-		var ft = new FileTransfer();
-		
-		ft.download(
-		  "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.pdf", // what u download
-		 // "/sdcard/test.pdf", // this is the filename as well complete url
-		"/sdcard/arquivos/test17jan.pdf", // this is the filename as well complete url
-		  // fileSystem.root.toURL() + "test.zip",  use ios and others
-		
-		  function(entry) {
-			alert("success");
-			alert(JSON.stringify(entry));
-		
-		  },
-		  function(err) {
-			alert(err);
-			alert(JSON.stringify(err));
-		  }
-		
-		);
- 
-
-
-}
-
-
-
-
-function arq2(){
-cordova.InAppBrowser.open(encodeURI('http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.pdf'), '_blank', 'location=yes,hidden=no');
-	   
-    }
-
-
-function arq3(){
-cordova.InAppBrowser.open(encodeURI('https://www.ivanprogramador.com.br/teste/hadaya/cliente/pedido_teste.php?id=121'), '_blank', 'location=yes,hidden=no');
-	   
-    }
