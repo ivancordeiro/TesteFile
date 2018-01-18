@@ -64,8 +64,8 @@ alert( 'someSetting: ' + someSetting );
 
 
 
-}
 
+show();
 
 
 
@@ -75,7 +75,19 @@ alert( 'someSetting: ' + someSetting );
 
     function show(){
 db = window.openDatabase("Database", "1.0", "PhoneGap Demo", 200000);
-db.transaction(queryDB, errorCB2);
+//db.transaction(queryDB, errorCB2);
+
+
+db.executeSql("select * from DEMO;", [], function(tx,res) {
+    for(var i=0; i<res.rows.length;i++) {
+        alert("i:"+i);
+    }
+}, function(e){
+    alert("ERROR: " + e.message);
+});
+
+
+
     }
 
 
@@ -84,6 +96,11 @@ db.transaction(queryDB, errorCB2);
 function queryDB(tx) {
     tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB2b);
 }
+
+
+
+
+
 
 function querySuccess(tx, results) {
 console.log("Returned rows = " + results.rows.length);
@@ -103,6 +120,12 @@ function errorCB2(err) {
 
 function errorCB2b(err) {
     alert("Error processing SQL 2b: "+err.code);
+}
+
+
+
+
+
 }
 
 
