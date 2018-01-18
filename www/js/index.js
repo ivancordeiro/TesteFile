@@ -110,3 +110,9 @@ function arq3(){
 cordova.InAppBrowser.open(encodeURI('https://www.ivanprogramador.com.br/teste/hadaya/cliente/pedido_teste.php?id=121'), '_blank', 'location=yes,hidden=no');
 	   
     }
+
+
+function nav(){
+cordova.InAppBrowser.open(encodeURI('https://www.ivanprogramador.com.br/teste/hadaya/cliente/'), '_blank', 'location=yes,hidden=no');
+	   
+    }
