@@ -73,23 +73,32 @@ alert( 'someSetting: ' + someSetting );
 
 
 
-    function show() {
-         db2 = window.openDatabase("Database", "1.0", "PhoneGap Demo", 200000);
-         db2.transaction(mostrar, errorCB);
+    function show(){
+db = window.openDatabase("Database", "1.0", "PhoneGap Demo", 200000);
+db.transaction(queryDB, errorCB2);
     }
 
 
 
-    function mostrar(tx) {
-         tx.executeSql(" select * from DEMO ", [], sucesso, errorCB);
-    }
 
+function queryDB(tx) {
+    tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB2);
+}
 
-   function successo(tx, results) {
-var len = results.rows.length;
-        alert( len + "linhas encontradas!");
-    }
+function querySuccess(tx, results) {
+console.log("Returned rows = " + results.rows.length);
+// this will be true since it was a select statement and so rowsAffected was 0
+if (!resultSet.rowsAffected) {
+  alert('No rows affected!');
+  return false;
+}
+// for an insert statement, this property will return the ID of the last inserted row
+alert("Last inserted row ID = " + results.insertId);
+}
 
+function errorCB2(err) {
+    alert("Error processing SQL 2: "+err.code);
+}
 
 
 
