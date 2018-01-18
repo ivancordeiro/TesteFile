@@ -7,7 +7,11 @@ function onDeviceReady(){
 myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
 }
 //Create new table
-$("#createTable").click(function(){
+//$("#createTable").click(function(){
+function createTable(){
+
+alert("criar table.");
+
     myDB.transaction(function(transaction) {
     transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, title text, desc text)', [],
         function(tx, result) {
@@ -17,7 +21,8 @@ $("#createTable").click(function(){
               alert("Error occurred while creating the table.");
         });
     });
-});
+}
+//});
 
 //Insert New Data
 $("#insert").click(function(){
