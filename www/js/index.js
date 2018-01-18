@@ -61,7 +61,27 @@ alert( 'someSetting: ' + someSetting );
 
 
 
+    function show() {
+         db = window.openDatabase("Database", "1.0", "PhoneGap Demo", 200000);
+         db.transaction(mostrar, errorCB);
+    }
+
+
+
+    function mostrar(tx) {
+         tx.executeSql(" select * from DEMO ", [], sucesso, errorCB);
+    }
+
+
+   function successo(tx, results) {
+var len = results.rows.length;
+        alert( len + "linhas encontradas!");
+    }
+
+
 }
+
+
 
 
 
