@@ -4,9 +4,25 @@ function onDeviceReady() {
 //nav5b();
 //nav5c();
 //
-nav5c2();
+//nav5c2();
 //nav5d();
 //nav5e();
+
+teste();
+
+}
+
+function teste(){ 
+
+	var myPath = cordova.file.externalRootDirectory; // We can use the default externalRootDirectory or use a path : file://my/custom/folder
+	alert('myPath - externalRootDirectory dados externos cartao:' + myPath);
+
+	var myPath2 = cordova.file.externalDataDirectory; // We can use the default externalRootDirectory or use a path : file://my/custom/folder
+	alert('myPath2 externalDataDirectory dados especificos externos:' + myPath2);
+
+	var myPath3 = cordova.file.dataDirectory; // We can use the default externalRootDirectory or use a path : file://my/custom/folder
+	alert('myPath3 dataDirectory Armazenamento de dados persistente e privado dentro do sandbox do aplicativo usando a memória interna :' + myPath3);
+
 }
 
 function onDeviceReadyBkp() { 
