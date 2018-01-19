@@ -380,6 +380,48 @@ var arq2 = "test19janb2.zip";
 
 
 
+function createDirectory(){
+var rootDirEntry = cordova.file.externalDataDirectory; 
+    rootDirEntry.getDirectory('RadioNorth', { create: true }, function (dirEntry) {
+
+    }, errorHandler);
+}
+
+
+function createDirectory2(){
+var rootDirEntry = "file:///storage/emulated/0/"; 
+    rootDirEntry.getDirectory('RadioNorth2', { create: true }, function (dirEntry) {
+
+    }, errorHandler);
+}
+
+
+function createDirectory3(){
+var rootDirEntry = "file:///storage/emulated/0/Download/"; 
+    rootDirEntry.getDirectory('RadioNorth3', { create: true }, function (dirEntry) {
+
+    }, errorHandler);
+}
+
+
+function createDirectory4(){
+var rootDirEntry = "file:///storage/emulated/0/DCIM/"; 
+    rootDirEntry.getDirectory('RadioNorth4', { create: true }, function (dirEntry) {
+
+    }, errorHandler);
+}
+
+
+function createDirectory5(){
+var rootDirEntry = "file:///storage/emulated/0/DCIM/Camera/"; 
+    rootDirEntry.getDirectory('RadioNorth5', { create: true }, function (dirEntry) {
+
+    }, errorHandler);
+}
+
+
+
+
 function testeDirDow2(){ 
 
 alert('chamou funcao dowload');
