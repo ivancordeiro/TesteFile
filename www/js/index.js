@@ -137,7 +137,11 @@ function testeDirDow(){
 alert('chamou funcao dowload');
 
 var arq = "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.zip";
-var arq2 = "test20jan.pdf";
+var arq2 = "test19jan2.pdf";
+var arq3 = "test19jan3.pdf";
+var arq4 = "test19jan4.pdf";
+var arq5 = "test19jan5.pdf";
+var arq6 = "test19jan6.pdf";
 
 	var myPath = cordova.file.externalRootDirectory; // We can use the default externalRootDirectory or use a path : file://my/custom/folder
 	alert('myPath - externalRootDirectory dados externos cartao:' + myPath);
@@ -178,7 +182,7 @@ var arq2 = "test20jan.pdf";
 		ft.download(
 
 		  arq, // what u download
-		myPath2 + arq2, // this is the filename as well complete url
+		myPath2 + arq3, // this is the filename as well complete url
 		  function(entry) {
 			alert("success 2");
 			alert(JSON.stringify(entry));		
@@ -195,7 +199,7 @@ var arq2 = "test20jan.pdf";
 		ft.download(
 
 		  arq, // what u download
-		myPath3 + arq2, // this is the filename as well complete url
+		myPath3 + arq4, // this is the filename as well complete url
 		  function(entry) {
 			alert("success 3");
 			alert(JSON.stringify(entry));		
@@ -207,7 +211,44 @@ var arq2 = "test20jan.pdf";
 		);
  
 
+
+		ft.download(
+
+		  arq, // what u download
+		myPath4 + arq5, // this is the filename as well complete url
+		  function(entry) {
+			alert("success 4");
+			alert(JSON.stringify(entry));		
+		  },
+		  function(err) {
+			alert('erro 4'+ err);
+			alert(JSON.stringify(err));
+		  }	
+		);
+
+
+
+		ft.download(
+
+		  arq, // what u download
+		myPath5 + arq6, // this is the filename as well complete url
+		  function(entry) {
+			alert("success 6");
+			alert(JSON.stringify(entry));		
+		  },
+		  function(err) {
+			alert('erro 5'+ err);
+			alert(JSON.stringify(err));
+		  }	
+		);
+
+
+
 }
+
+
+
+
 
 
 
