@@ -14,6 +14,68 @@ function onDeviceReady() {
 
 
 
+function up(){
+
+window.requestFileSystem(window.TEMPORARY, 2 * 1024 * 1024, function (fs) {
+
+    alert('file system open: ' + fs.name);
+
+    // Make sure you add the domain name to the Content-Security-Policy <meta> element.
+    var url = 'http://www.ivanprogramador.com.br/btn_home.png';
+    // Parameters passed to getFile create a new file or return the file if it already exists.
+    fs.root.getFile('downloaded-image.png', { create: true, exclusive: false }, function (fileEntry) {
+        download(fileEntry, url, true);
+
+    }, errorHandler);
+
+}, errorHandler);
+
+
+
+function download(fileEntry, uri, readBinaryData) {
+
+    var fileTransfer = new FileTransfer();
+    var fileURL = fileEntry.toURL();
+
+alert("fileURL:" + fileURL);
+
+    fileTransfer.download(
+        uri,
+        fileURL,
+        function (entry) {
+            alert("Successful download...");
+            alert("download complete: " + entry.toURL());
+            if (readBinaryData) {
+              // Read the file...
+              readBinaryFile(entry);
+            }
+            else {
+              // Or just display it.
+              displayImageByFileURL(entry);
+            }
+        },
+        function (error) {
+            alert("download error source " + error.source);
+            alert("download error target " + error.target);
+            alert("upload error code" + error.code);
+        },
+        null, // or, pass false
+        {
+            //headers: {
+            //    "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+            //}
+        }
+    );
+}
+
+
+}
+
+
+
+
+
+
 
 
 function cria1(){
@@ -451,7 +513,7 @@ var arq6 = "test19janb6.zip";
 
 function onDeviceReadyBkp() { 
 
- //console.log('console: Received Event');
+ //alert('console: Received Event');
 
 alert('ok 1');
 //arq();
@@ -552,7 +614,7 @@ function queryDB(tx) {
 
 
 function querySuccess(tx, results) {
-console.log("Returned rows = " + results.rows.length);
+alert("Returned rows = " + results.rows.length);
 // this will be true since it was a select statement and so rowsAffected was 0
 if (!resultSet.rowsAffected) {
   alert('No rows affected!');
