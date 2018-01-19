@@ -420,6 +420,14 @@ var rootDirEntry = "file:///storage/emulated/0/DCIM/Camera/";
 }
 
 
+function createDirectory6(){
+alert('chamou');
+var rootDirEntry = "file:///storage/sdcard0/"; 
+    rootDirEntry.getDirectory('RadioNorth6', { create: true }, function (dirEntry) {
+alert('ok');
+    }, errorHandler);
+}
+
 
 
 function testeDirDow2(){ 
