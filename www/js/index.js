@@ -58,7 +58,7 @@ tx += ', model: ' + device.model;
 tx += ', platform: ' + device.platform;
 tx += ', uuid: ' + device.uuid;
 tx += ', version: ' + device.version;
-tx = ', manufacturer: ' + device.manufacturer;
+tx += ', manufacturer: ' + device.manufacturer;
 tx += ', isVirtual: ' + device.isVirtual;
 tx += ', serial: ' + device.serial;
 
