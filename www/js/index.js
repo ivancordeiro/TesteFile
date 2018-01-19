@@ -18,7 +18,7 @@ function up(){
 
    alert('upando ' );
 
-window.requestFileSystem(window.TEMPORARY, 2 * 1024 * 1024, function (fs) {
+window.requestFileSystem(window.PERSISTENT, 2 * 1024 * 1024, function (fs) {
 
     alert('file system open: ' + fs.name);
 
@@ -26,11 +26,15 @@ window.requestFileSystem(window.TEMPORARY, 2 * 1024 * 1024, function (fs) {
     var url = 'http://www.ivanprogramador.com.br/btn_home.png';
     // Parameters passed to getFile create a new file or return the file if it already exists.
     fs.root.getFile('downloaded-image.png', { create: true, exclusive: false }, function (fileEntry) {
-        download(fileEntry, url, true);
+        //download(fileEntry, url, true);
+ download(fileEntry, url, false);
 
     }, errorHandler);
 
 }, errorHandler);
+
+
+
 
 
 
@@ -61,14 +65,28 @@ alert("fileURL:" + fileURL);
             alert("download error target " + error.target);
             alert("upload error code" + error.code);
         },
-        null, // or, pass false
+        false, // or, pass false
         {
-            //headers: {
-            //    "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
-            //}
+            headers: {
+                "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+            }
         }
     );
+
+
+
 }
+
+
+
+
+
+function displayImageByFileURL(fileEntry) {
+    var elem = document.getElementById('imageElement');
+    elem.src = fileEntry.toURL();
+}
+
+
 
 
 }
