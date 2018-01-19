@@ -132,16 +132,21 @@ function testeDir(){
 
 }
 
+
+
+
+
+
 function testeDirDow(){ 
 
 alert('chamou funcao dowload');
 
 var arq = "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.zip";
-var arq2 = "test19jan2.pdf";
-var arq3 = "test19jan3.pdf";
-var arq4 = "test19jan4.pdf";
-var arq5 = "test19jan5.pdf";
-var arq6 = "test19jan6.pdf";
+var arq2 = "test19janb2.zip";
+var arq3 = "test19janb3.zip";
+var arq4 = "test19janb4.zip";
+var arq5 = "test19janb5.zip";
+var arq6 = "test19janb6.zip";
 
 	var myPath = cordova.file.externalRootDirectory; // We can use the default externalRootDirectory or use a path : file://my/custom/folder
 	alert('myPath - externalRootDirectory dados externos cartao:' + myPath);
@@ -248,6 +253,198 @@ var arq6 = "test19jan6.pdf";
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+function testeDirDow1(){ 
+
+alert('chamou funcao dowload');
+
+var arq = "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.zip";
+var arq2 = "test19janb2.zip";
+
+	var myPath = cordova.file.externalRootDirectory; // We can use the default externalRootDirectory or use a path : file://my/custom/folder
+	alert('myPath - externalRootDirectory dados externos cartao:' + myPath);
+
+
+		var ft = new FileTransfer();
+		
+		ft.download(
+
+		  arq, // what u download
+		myPath + arq2, // this is the filename as well complete url
+		  function(entry) {
+			alert("success 1");
+			alert(JSON.stringify(entry));		
+		  },
+		  function(err) {
+			alert('erro 1'+ err);
+			alert(JSON.stringify(err));
+		  }	
+		);
+
+
+
+}
+
+
+
+
+function testeDirDow2(){ 
+
+alert('chamou funcao dowload');
+
+var arq = "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.zip";
+var arq3 = "test19janb3.zip";
+
+
+	var myPath2 = cordova.file.externalDataDirectory; // We can use the default externalRootDirectory or use a path : file://my/custom/folder
+	alert('myPath2 externalDataDirectory dados especificos externos:' + myPath2);
+
+
+
+		var ft = new FileTransfer();
+		
+		ft.download(
+
+		  arq, // what u download
+		myPath2 + arq3, // this is the filename as well complete url
+		  function(entry) {
+			alert("success 2");
+			alert(JSON.stringify(entry));		
+		  },
+		  function(err) {
+			alert('erro 2'+ err);
+			alert(JSON.stringify(err));
+		  }	
+		);
+	
+
+}
+
+
+
+
+
+
+
+
+function testeDirDow3(){ 
+
+alert('chamou funcao dowload');
+
+var arq = "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.zip";
+var arq4 = "test19janb4.zip";
+
+	var myPath3 = cordova.file.dataDirectory; // We can use the default externalRootDirectory or use a path : file://my/custom/folder
+	alert('myPath3 dataDirectory Armazenamento de dados persistente e privado dentro do sandbox do aplicativo usando a memória interna :' + myPath3);
+
+
+
+		var ft = new FileTransfer();
+		
+
+		ft.download(
+
+		  arq, // what u download
+		myPath3 + arq4, // this is the filename as well complete url
+		  function(entry) {
+			alert("success 3");
+			alert(JSON.stringify(entry));		
+		  },
+		  function(err) {
+			alert('erro 3'+ err);
+			alert(JSON.stringify(err));
+		  }	
+		);
+ 
+
+
+}
+
+
+
+
+
+
+function testeDirDow4(){ 
+
+alert('chamou funcao dowload');
+
+var arq = "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.zip";
+var arq5 = "test19janb5.zip";
+
+	var myPath4 ="file:///data/Android/data/br.com.testefile/files/"; 
+	alert('myPath4:' + myPath4);
+
+
+		var ft = new FileTransfer();
+		
+
+
+		ft.download(
+
+		  arq, // what u download
+		myPath4 + arq5, // this is the filename as well complete url
+		  function(entry) {
+			alert("success 4");
+			alert(JSON.stringify(entry));		
+		  },
+		  function(err) {
+			alert('erro 4'+ err);
+			alert(JSON.stringify(err));
+		  }	
+		);
+
+
+
+}
+
+
+
+
+
+function testeDirDow5(){ 
+
+alert('chamou funcao dowload');
+
+var arq = "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.zip";
+var arq6 = "test19janb6.zip";
+
+
+	var myPath5 ="file:///data/br.com.testefile/files/"; 
+	alert('myPath5:' + myPath5);
+
+
+
+		var ft = new FileTransfer();
+		
+
+		ft.download(
+
+		  arq, // what u download
+		myPath5 + arq6, // this is the filename as well complete url
+		  function(entry) {
+			alert("success 6");
+			alert(JSON.stringify(entry));		
+		  },
+		  function(err) {
+			alert('erro 5'+ err);
+			alert(JSON.stringify(err));
+		  }	
+		);
+
+
+
+}
 
 
 
