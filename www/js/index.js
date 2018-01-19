@@ -193,7 +193,8 @@ window.open(encodeURI('https://www.ivanprogramador.com.br/teste/hadaya/cliente/p
  }
 
 function nav2c(){
-ifr.loction.href = 'https://www.ivanprogramador.com.br/teste/hadaya/cliente';
+alert('nav2c');
+ifr.location.href = 'https://www.ivanprogramador.com.br/teste/hadaya/cliente';
  }
 
 function nav3(){
