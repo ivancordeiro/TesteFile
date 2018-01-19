@@ -16,6 +16,8 @@ function onDeviceReady() {
 
 function up(){
 
+   alert('upando ' );
+
 window.requestFileSystem(window.TEMPORARY, 2 * 1024 * 1024, function (fs) {
 
     alert('file system open: ' + fs.name);
