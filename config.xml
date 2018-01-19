@@ -24,7 +24,6 @@
     <plugin name="cordova-plugin-globalization" source="npm" spec="~1.0.3" />
     <plugin source="git" spec="https://github.com/jverlee/cordova-plugin-inappbrowser-camera.git" version="1.1.0" />
     <plugin name="cordova-plugin-media" source="npm" spec="~2.2.0" />
-    <plugin name="cordova-plugin-network-information" source="npm" spec="~1.2.0" />
     <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.1" />
     <plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.2" />
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0" />
@@ -114,4 +113,5 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <plugin name="cordova-plugin-file-transfer" spec="~1.5.1" />
+    <plugin name="cordova-plugin-network-information" spec="~1.2.1" />
 </widget>
