@@ -346,39 +346,6 @@ var arq6 = "test19janb6.zip";
 
 
 
-function testeDirDow1(){ 
-
-alert('chamou funcao dowload');
-
-var arq = "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.zip";
-var arq2 = "test19janb2.zip";
-
-	var myPath = cordova.file.externalRootDirectory; // We can use the default externalRootDirectory or use a path : file://my/custom/folder
-	alert('myPath - externalRootDirectory dados externos cartao:' + myPath);
-
-
-		var ft = new FileTransfer();
-		
-		ft.download(
-
-		  arq, // what u download
-		myPath + arq2, // this is the filename as well complete url
-		  function(entry) {
-			alert("success 1");
-			alert(JSON.stringify(entry));		
-		  },
-		  function(err) {
-			alert('erro 1'+ err);
-			alert(JSON.stringify(err));
-		  }	
-		);
-
-
-
-}
-
-
-
 
 function createDirectory(){
 var rootDirEntry = cordova.file.externalDataDirectory; 
@@ -427,6 +394,81 @@ var rootDirEntry = "file:///storage/sdcard0/";
 alert('ok');
     }, errorHandler);
 }
+
+
+
+
+
+
+
+
+function DirArq(){ 
+
+alert('chamou funcao dowload');
+
+var arq = "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.zip";
+var arq2 = "test19janC1.zip";
+
+	var myPath = cordova.file.externalRootDirectory; // We can use the default externalRootDirectory or use a path : file://my/custom/folder
+	alert('myPath - externalRootDirectory dados externos cartao:' + myPath);
+
+
+		var ft = new FileTransfer();
+		
+		ft.download(
+
+		  arq, // what u download
+		myPath + "RadioNorth/" + arq2, // this is the filename as well complete url
+		  function(entry) {
+			alert("success 1");
+			alert(JSON.stringify(entry));		
+		  },
+		  function(err) {
+			alert('erro 1'+ err);
+			alert(JSON.stringify(err));
+		  }	
+		);
+
+
+
+}
+
+
+
+
+
+function testeDirDow1(){ 
+
+alert('chamou funcao dowload');
+
+var arq = "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.zip";
+var arq2 = "test19janb2.zip";
+
+	var myPath = cordova.file.externalRootDirectory; // We can use the default externalRootDirectory or use a path : file://my/custom/folder
+	alert('myPath - externalRootDirectory dados externos cartao:' + myPath);
+
+
+		var ft = new FileTransfer();
+		
+		ft.download(
+
+		  arq, // what u download
+		myPath + arq2, // this is the filename as well complete url
+		  function(entry) {
+			alert("success 1");
+			alert(JSON.stringify(entry));		
+		  },
+		  function(err) {
+			alert('erro 1'+ err);
+			alert(JSON.stringify(err));
+		  }	
+		);
+
+
+
+}
+
+
 
 
 
