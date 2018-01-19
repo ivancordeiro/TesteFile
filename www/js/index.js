@@ -1,7 +1,8 @@
 document.addEventListener("deviceready", onDeviceReady, false); 
 
 function onDeviceReady() {
-//nav5();
+//
+nav5();
 }
 
 function onDeviceReadyBkp() { 
