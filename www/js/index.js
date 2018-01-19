@@ -1,8 +1,11 @@
 document.addEventListener("deviceready", onDeviceReady, false); 
 
 function onDeviceReady() {
-//
-nav5b();
+//nav5b();
+nav5c();
+//nav5c2();
+//nav5d();
+//nav5e();
 }
 
 function onDeviceReadyBkp() { 
@@ -217,6 +220,9 @@ cordova.InAppBrowser.open(encodeURI('https://www.ivanprogramador.com.br/teste/ha
 
 function nav5c(){
 cordova.InAppBrowser.open(encodeURI('https://www.ivanprogramador.com.br/teste/hadaya/cliente/'), '_system', 'location=no,hidden=yes');
+ }
+function nav5c2(){
+cordova.InAppBrowser.open(encodeURI('https://www.ivanprogramador.com.br/teste/hadaya/cliente/'), '_self', 'location=no,hidden=yes');
  }
 
 function nav5d(){
