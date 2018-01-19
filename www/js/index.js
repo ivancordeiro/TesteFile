@@ -12,6 +12,108 @@ function onDeviceReady() {
 
 }
 
+
+
+
+
+function cria1(){
+window.requestFileSystem(window.PERSISTENT, 1024*1024, onInitFs, errorHandler);//1mb
+}
+
+function cria2(){
+window.requestFileSystem(window.TEMPORARY, 1024*1024, onInitFs2, errorHandler);
+}
+
+
+
+function cria3(){
+
+window.requestFileSystem(window.PERSISTENT, 1024*1024, function(fs) {
+  fs.root.getDirectory('MyPictures', {create: true}, function(dirEntry) {
+
+  }, errorHandler);
+}, errorHandler);
+
+
+}
+
+
+
+
+
+function cria4(){
+
+window.requestFileSystem(window.TEMPORARY, 1024*1024, function(fs) {
+  fs.root.getDirectory('MyPictures2', {create: true}, function(dirEntry) {
+
+  }, errorHandler);
+}, errorHandler);
+
+
+}
+
+
+function onInitFs(fs) {
+
+  fs.root.getFile('log.txt', {create: true, exclusive: true}, function(fileEntry) {
+
+    // fileEntry.isFile === true
+    // fileEntry.name == 'log.txt'
+    // fileEntry.fullPath == '/log.txt'
+
+  }, errorHandler);
+
+}
+
+
+
+function onInitFs2(fs) {
+
+  fs.root.getFile('log2.txt', {create: true, exclusive: true}, function(fileEntry) {
+
+    // fileEntry.isFile === true
+    // fileEntry.name == 'log.txt'
+    // fileEntry.fullPath == '/log.txt'
+
+  }, errorHandler);
+
+}
+
+
+function errorHandler(e) {
+  var msg = '';
+
+  switch (e.code) {
+    case FileError.QUOTA_EXCEEDED_ERR:
+      msg = 'QUOTA_EXCEEDED_ERR';
+      break;
+    case FileError.NOT_FOUND_ERR:
+      msg = 'NOT_FOUND_ERR';
+      break;
+    case FileError.SECURITY_ERR:
+      msg = 'SECURITY_ERR';
+      break;
+    case FileError.INVALID_MODIFICATION_ERR:
+      msg = 'INVALID_MODIFICATION_ERR';
+      break;
+    case FileError.INVALID_STATE_ERR:
+      msg = 'INVALID_STATE_ERR';
+      break;
+    default:
+      msg = 'Unknown Error';
+      break;
+  };
+
+  alert('Error: ' + msg);
+}
+
+
+
+
+
+
+
+
 function fechar(){
 alert('fechando app');
 navigator.app.exitApp();
@@ -35,7 +137,7 @@ function testeDirDow(){
 alert('chamou funcao dowload');
 
 var arq = "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.zip";
-var arq2 = "test19jan.pdf";
+var arq2 = "test20jan.pdf";
 
 	var myPath = cordova.file.externalRootDirectory; // We can use the default externalRootDirectory or use a path : file://my/custom/folder
 	alert('myPath - externalRootDirectory dados externos cartao:' + myPath);
@@ -45,6 +147,12 @@ var arq2 = "test19jan.pdf";
 
 	var myPath3 = cordova.file.dataDirectory; // We can use the default externalRootDirectory or use a path : file://my/custom/folder
 	alert('myPath3 dataDirectory Armazenamento de dados persistente e privado dentro do sandbox do aplicativo usando a memória interna :' + myPath3);
+
+	var myPath4 ="file:///data/Android/data/br.com.testefile/files/"; 
+	alert('myPath4:' + myPath4);
+
+	var myPath5 ="file:///data/br.com.testefile/files/"; 
+	alert('myPath5:' + myPath5);
 
 
 
