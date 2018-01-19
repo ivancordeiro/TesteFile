@@ -2,7 +2,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
 //
-nav5();
+nav5b();
 }
 
 function onDeviceReadyBkp() { 
@@ -208,6 +208,23 @@ cordova.InAppBrowser.open(encodeURI('https://www.ivanprogramador.com.br/teste/ha
 
 function nav5(){
 cordova.InAppBrowser.open(encodeURI('https://www.ivanprogramador.com.br/teste/hadaya/cliente/pedido_teste.php'), '_system', 'location=yes,hidden=yes');
+ }
+
+
+function nav5b(){
+cordova.InAppBrowser.open(encodeURI('https://www.ivanprogramador.com.br/teste/hadaya/cliente/'), '_system', 'location=yes,hidden=yes');
+ }
+
+function nav5c(){
+cordova.InAppBrowser.open(encodeURI('https://www.ivanprogramador.com.br/teste/hadaya/cliente/'), '_system', 'location=no,hidden=yes');
+ }
+
+function nav5d(){
+cordova.InAppBrowser.open(encodeURI('https://www.ivanprogramador.com.br/teste/hadaya/cliente/'), '_system', 'location=yes,hidden=no');
+ }
+
+function nav5e(){
+cordova.InAppBrowser.open(encodeURI('https://www.ivanprogramador.com.br/teste/hadaya/cliente/'), '_system', 'location=no,hidden=no');
  }
 
 function bx(){
