@@ -1,6 +1,10 @@
 document.addEventListener("deviceready", onDeviceReady, false); 
 
-function onDeviceReady() { 
+function onDeviceReady() {
+nav5();
+}
+
+function onDeviceReadyBkp() { 
 
  //console.log('console: Received Event');
 
