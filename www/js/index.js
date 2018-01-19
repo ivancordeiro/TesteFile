@@ -2,8 +2,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
 //nav5b();
-nav5c();
-//nav5c2();
+//nav5c();
+//
+nav5c2();
 //nav5d();
 //nav5e();
 }
