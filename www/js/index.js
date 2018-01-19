@@ -8,11 +8,16 @@ function onDeviceReady() {
 //nav5d();
 //nav5e();
 
-teste();
+//testeDir();
 
 }
 
-function teste(){ 
+function fechar(){
+alert('fechando app');
+navigator.app.exitApp();
+}
+
+function testeDir(){ 
 
 	var myPath = cordova.file.externalRootDirectory; // We can use the default externalRootDirectory or use a path : file://my/custom/folder
 	alert('myPath - externalRootDirectory dados externos cartao:' + myPath);
@@ -24,6 +29,79 @@ function teste(){
 	alert('myPath3 dataDirectory Armazenamento de dados persistente e privado dentro do sandbox do aplicativo usando a memória interna :' + myPath3);
 
 }
+
+function testeDirDow(){ 
+
+alert('chamou funcao dowload');
+
+var arq = "http://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.zip";
+var arq2 = "test19jan.pdf";
+
+	var myPath = cordova.file.externalRootDirectory; // We can use the default externalRootDirectory or use a path : file://my/custom/folder
+	alert('myPath - externalRootDirectory dados externos cartao:' + myPath);
+
+	var myPath2 = cordova.file.externalDataDirectory; // We can use the default externalRootDirectory or use a path : file://my/custom/folder
+	alert('myPath2 externalDataDirectory dados especificos externos:' + myPath2);
+
+	var myPath3 = cordova.file.dataDirectory; // We can use the default externalRootDirectory or use a path : file://my/custom/folder
+	alert('myPath3 dataDirectory Armazenamento de dados persistente e privado dentro do sandbox do aplicativo usando a memória interna :' + myPath3);
+
+
+
+		var ft = new FileTransfer();
+		
+		ft.download(
+
+		  arq, // what u download
+		myPath + arq2, // this is the filename as well complete url
+		  function(entry) {
+			alert("success 1");
+			alert(JSON.stringify(entry));		
+		  },
+		  function(err) {
+			alert('erro 1'+ err);
+			alert(JSON.stringify(err));
+		  }	
+		);
+
+
+		var ft = new FileTransfer();
+		
+		ft.download(
+
+		  arq, // what u download
+		myPath2 + arq2, // this is the filename as well complete url
+		  function(entry) {
+			alert("success 2");
+			alert(JSON.stringify(entry));		
+		  },
+		  function(err) {
+			alert('erro 2'+ err);
+			alert(JSON.stringify(err));
+		  }	
+		);
+		var ft = new FileTransfer();
+	
+
+	
+		ft.download(
+
+		  arq, // what u download
+		myPath3 + arq2, // this is the filename as well complete url
+		  function(entry) {
+			alert("success 3");
+			alert(JSON.stringify(entry));		
+		  },
+		  function(err) {
+			alert('erro 3'+ err);
+			alert(JSON.stringify(err));
+		  }	
+		);
+ 
+
+}
+
+
 
 function onDeviceReadyBkp() { 
 
