@@ -184,6 +184,10 @@ function nav2(){
 cordova.InAppBrowser.open(encodeURI('https://www.ivanprogramador.com.br/teste/hadaya/cliente/pedido_teste.php'), 'ifr', 'location=yes,hidden=yes');
  }
 
+function nav2b(){
+window.open(encodeURI('https://www.ivanprogramador.com.br/teste/hadaya/cliente/pedido_teste.php'), 'ifr', 'location=yes,hidden=yes');
+ }
+
 function nav3(){
 cordova.InAppBrowser.open(encodeURI('https://www.ivanprogramador.com.br/teste/hadaya/cliente/pedido_teste.php'), '_blank', 'location=yes,hidden=yes');
  }
