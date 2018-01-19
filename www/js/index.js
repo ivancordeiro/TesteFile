@@ -224,3 +224,9 @@ cordova.InAppBrowser.open(encodeURI('https://www.ivanprogramador.com.br/teste/ha
 function bx4(){
 cordova.InAppBrowser.open(encodeURI('https://www.ivanprogramador.com.br/teste/hadaya/cliente/teste.zip'), '_system', 'location=no,hidden=no');
  }
+
+
+function cons() {
+  alert('teste alert');
+console.log('teste console ');
+}
